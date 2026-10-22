@@ -1,0 +1,25 @@
+# CMake build directories
+out/
+
+# IDE directories
+.idea/
+.vs/
+.vscode/
+
+# Compiled files
+*.o
+*.obj
+*.exe
+*.out
+*.app
+
+# CMake cache
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Generated files
+*.user
+*.suo
+*.sln.docstates
