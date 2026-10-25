@@ -1,68 +1,89 @@
-# Prerequisites
-*.d
+# ==============================================================================
+#  BUILD DIRECTORIES & OUTPUTS
+# ==============================================================================
+out/
+build/
+bin/
+lib/
+*.dir/
 
-# Compiled Object files
-*.slo
-*.lo
+# Compiled object files & libraries
 *.o
 *.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Linker files
-*.ilk
-
-# Debugger Files
-*.pdb
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-*.so.*
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
 *.a
 *.lib
+*.so
+*.dylib
 
 # Executables
 *.exe
 *.out
 *.app
 
-# Build directories
-build/
-Build/
-build-*/
-
-# CMake generated files
+# ==============================================================================
+#  CMAKE TEMPORARY & GENERATED FILES
+# ==============================================================================
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
+CTestTestfile.cmake
 Makefile
-install_manifest.txt
 compile_commands.json
 
-# Temporary files
-*.tmp
+# CMake Presets (ignore user-specific overrides, keep shared preset)
+CMakeUserPresets.json
+
+# ==============================================================================
+#  JETBRAINS RIDER & CLANGD
+# ==============================================================================
+# Ignore user-specific workspace files, but keep team shared styles/vcs
+.idea/*
+!.idea/vcs.xml
+!.idea/codeStyles/
+!.idea/codeStyleSettings.xml
+
+# Rider C++ / Clangd indexing & caches
+.clangd/
+_ReSharper.Caches/
+*_Build/
+
+# ==============================================================================
+#  CLION SPECIFIC
+# ==============================================================================
+# Domyślny katalog budowania CLiona (gdy nie używasz 'out/' ani 'build/')
+cmake-build-*/
+
+# Profiler, zrzuty pamięci i logi wydajnościowe CLiona
+*.hprof
+*.pyc
+
+# Cache pomocniczy CLiona (w starszych wersjach lub przy integracji z innymi narzędziami)
+.idea/shelf/
+.idea/contentModel.xml
+
+# ==============================================================================
+#  OTHER IDEs & EDITORS (VS, VS Code)
+# ==============================================================================
+# Visual Studio
+.vs/
+*.VC.db
+*.VC.opendb
+*.vcxproj*
+!*.vcxproj.filters
+*.sln.targets
+*.user
+*.suo
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# ==============================================================================
+#  SYSTEM & OS TEMPORARY FILES
+# ==============================================================================
+.DS_Store
+Thumbs.db
 *.log
-*.bak
-*.swp
-
-# vcpkg
-vcpkg_installed/
-
-# debug information files
-*.dwo
-
-# test output & cache
-Testing/
-.cache/
