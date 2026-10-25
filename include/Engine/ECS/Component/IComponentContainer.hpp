@@ -1,11 +1,17 @@
 ﻿#pragma once
+#include <cstdint>
 
-class IComponentContainer
+#include "Engine/ECS/Entity/EntityID.hpp"
+
+namespace Engine::ECS
 {
-public:
-    virtual ~IComponentContainer() = default;
-    
-    virtual void removeComponent(size_t entityId) = 0;
-    
-    virtual void clear() = 0;
-};
+    class IComponentContainer
+    {
+    public:
+        virtual ~IComponentContainer() = default;
+
+        virtual void removeComponent(EntityID entityId) = 0;
+
+        virtual void clear() = 0;
+    };
+}

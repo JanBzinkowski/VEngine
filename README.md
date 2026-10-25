@@ -8,17 +8,19 @@ A C++ project using CMake build system.
 - C++ compiler with C++23 support
 - JetBrains Rider
 
-## Building and Running
+## Building
 
-This project uses CMake Presets for configuration. Open the project in Rider and use the IDE's built-in CMake tools to build and run:
+Configure and build from the repository root:
 
-1. Open the project in Rider
-2. Rider will automatically detect the CMake configuration from `CMakePresets.json`
-3. Select the desired build configuration from the toolbar
-4. Use the Run/Debug buttons to build and execute the project
+```sh
+cmake -S . -B build
+cmake --build build
+```
+
+The `VEngine` executable is the application target; `VEngineLib` contains the engine code and can be linked by other CMake targets. Rider can open the project directory and configure the targets directly from `CMakeLists.txt`.
 
 ## Project Structure
 
 - `src/` - Source files
+- `include/` - Public headers
 - `CMakeLists.txt` - CMake configuration
-- `CMakePresets.json` - CMake presets for IDE integration
