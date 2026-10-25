@@ -18,7 +18,7 @@ namespace Engine::ECS
         SystemManager(Event::EventManager* eventManager);
 
         template <typename T>
-        void subscribeToEvent() const;
+        Event::SubscriptionID subscribeToEvent(std::function<void(const T&)> callback) const;
 
         template <typename T>
         System* getOrCreateSystem();

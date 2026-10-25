@@ -5,10 +5,9 @@ namespace Engine::ECS
     SystemManager::SystemManager(Event::EventManager* eventManager): m_eventManager(eventManager){}
 
     template <typename T>
-    void SystemManager::subscribeToEvent() const
+    Event::SubscriptionID SystemManager::subscribeToEvent(std::function<void(const T&)> callback) const
     {
-        // TODO add sub ID, add function to callback
-        m_eventManager->subscribeToEvent<T>();
+        return m_eventManager->subscribeToEvent<T>(std::move(callback));
     }
 
     template <typename T>
