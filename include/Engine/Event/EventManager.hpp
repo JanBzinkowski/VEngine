@@ -6,13 +6,14 @@
 #include <unordered_map>
 
 #include "EventContainer.hpp"
+#include "EventContainer.hpp"
 #include "IEventContainer.hpp"
 
 namespace Engine::Event
 {
     using SubscriptionID = std::size_t;
 
-    class EventManager
+    class EventManager final
     {
     private:
         std::unordered_map<std::type_index, std::unique_ptr<IEventContainer>> m_eventContainers;

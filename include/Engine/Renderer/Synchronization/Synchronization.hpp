@@ -1,0 +1,10 @@
+﻿#ifndef VENGINE_SYNCHRONIZATION_H
+#define VENGINE_SYNCHRONIZATION_H
+
+
+class Synchronization
+{
+};
+
+
+#endif //VENGINE_SYNCHRONIZATION_H

@@ -1,15 +1,15 @@
 ﻿#pragma once
-#include <cstdint>
 #include <cstddef>
+#include <cstdint>
 
-namespace Engine::ECS
+namespace Engine::ECS::Entity
 {
-    struct EntityID
+    struct EntityID final
     {
         std::uint32_t id;
         std::uint32_t generation;
 
         bool operator==(const EntityID& other) const;
-        std::size_t hash() const noexcept;
+        [[nodiscard]] std::size_t hash() const noexcept;
     };
 }

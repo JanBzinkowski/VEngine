@@ -1,7 +1,7 @@
 #include <Engine/ECS/Entity/Entity.hpp>
 #include <Engine/ECS/Entity/EntityManager.hpp>
 
-namespace Engine::ECS
+namespace Engine::ECS::Entity
 {
     Entity::Entity(const EntityID& id, EntityManager* manager)
         : m_entityID(id), m_entityManager(manager) {}

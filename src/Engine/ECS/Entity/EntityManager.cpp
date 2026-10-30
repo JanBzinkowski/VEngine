@@ -1,9 +1,9 @@
 #include <Engine/ECS/Entity/EntityManager.hpp>
 
-namespace Engine::ECS
+namespace Engine::ECS::Entity
 {
     template<typename T>
-    ComponentContainer<T>* EntityManager::getOrCreateComponentContainer()
+    Component::ComponentContainer<T>* EntityManager::getOrCreateComponentContainer()
     {
         const auto& index = typeid(T);
 
@@ -14,7 +14,7 @@ namespace Engine::ECS
             return it -> second.get();
         }
 
-        auto [newIt, inserted] = m_componentContainers.emplace(index, std::make_unique<ComponentContainer<T>>());
+        auto [newIt, inserted] = m_componentContainers.emplace(index, std::make_unique<Component::ComponentContainer<T>>());
         return newIt -> second.get();
     }
 
@@ -73,14 +73,14 @@ namespace Engine::ECS
         {
             EntityID newEntity= {.id = m_nextEntityId++, .generation = 0};
             m_generationId.push_back(newEntity.generation);
-            return Entity(newEntity, this);
+            return {newEntity, this};
         }
         else
         {
             auto id = m_freeId.back();
             EntityID newEntity = {.id = id, .generation = ++m_generationId[id]};
             m_freeId.pop_back();
-            return Entity(newEntity, this);
+            return {newEntity, this};
         }
     }
 

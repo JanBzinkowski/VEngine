@@ -1,6 +1,6 @@
 ﻿#include <Engine/ECS/System/SystemManager.hpp>
 
-namespace Engine::ECS
+namespace Engine::ECS::System
 {
     SystemManager::SystemManager(Event::EventManager* eventManager): m_eventManager(eventManager){}
 
@@ -11,6 +11,7 @@ namespace Engine::ECS
     }
 
     template <typename T>
+    requires std::is_convertible_v<T*, System*>
     System* SystemManager::getOrCreateSystem()
     {
         auto& type_index = typeid(T);
@@ -22,7 +23,7 @@ namespace Engine::ECS
             return it -> second.get();
         }
 
-        auto [newIt, inserted] = m_systems.emplace(type_index, std::make_unique<System>());
+        auto [newIt, inserted] = m_systems.emplace(type_index, std::make_unique<T>(this));
         return newIt -> second.get();
     }
 
@@ -41,7 +42,7 @@ namespace Engine::ECS
 
     void SystemManager::triggerOnTickUpdate(double deltaTime) const
     {
-        for (auto system : m_systems)
+        for (const auto& system : m_systems)
         {
             system.second->onTickUpdate(deltaTime);
         }
@@ -49,7 +50,15 @@ namespace Engine::ECS
 
     void SystemManager::triggerOnBeginPlayUpdate() const
     {
-        for (auto system: m_systems)
+        for (const auto& system: m_systems)
+        {
+            system.second->onBeginPlayUpdate();
+        }
+    }
+
+    void SystemManager::triggerOnEndPlayUpdate(Types::EndPlayReason reason)
+    {
+        for (const auto& system: m_systems)
         {
             system.second->onBeginPlayUpdate();
         }

@@ -6,9 +6,9 @@
 #include "System.hpp"
 #include "Engine/Event/EventManager.hpp"
 
-namespace Engine::ECS
+namespace Engine::ECS::System
 {
-    class SystemManager
+    class SystemManager final
     {
     private:
         Event::EventManager* m_eventManager;
@@ -21,6 +21,7 @@ namespace Engine::ECS
         Event::SubscriptionID subscribeToEvent(std::function<void(const T&)> callback) const;
 
         template <typename T>
+        requires std::is_convertible_v<T*, System*>
         System* getOrCreateSystem();
 
         template <typename T>
@@ -29,5 +30,6 @@ namespace Engine::ECS
         void triggerOnTickUpdate(double deltaTime) const;
 
         void triggerOnBeginPlayUpdate() const;
+        void triggerOnEndPlayUpdate(Types::EndPlayReason reason);
     };
 }

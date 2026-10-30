@@ -4,10 +4,10 @@
 #include <string>
 #include <utility>
 
-namespace Engine::ECS
+namespace Engine::ECS::Component
 {
     template<typename T>
-    void ComponentContainer<T>::removeComponent(EntityID entityId)
+    void ComponentContainer<T>::removeComponent(Entity::EntityID entityId)
     {
         components.erase(entityId);
     }
@@ -20,7 +20,7 @@ namespace Engine::ECS
 
     template<typename T>
     template<typename... Args>
-    T& ComponentContainer<T>::addComponent(EntityID entityId, Args&& ... args)
+    T& ComponentContainer<T>::addComponent(Entity::EntityID entityId, Args&& ... args)
     {
         auto [it, inserted] = components.try_emplace(entityId, std::forward<Args>(args)...);
 
@@ -33,13 +33,13 @@ namespace Engine::ECS
     }
 
     template<typename T>
-    bool ComponentContainer<T>::hasComponent(EntityID entityId) const
+    bool ComponentContainer<T>::hasComponent(Entity::EntityID entityId) const
     {
         return components.contains(entityId);
     }
 
     template<typename T>
-    T& ComponentContainer<T>::getComponent(EntityID entityId)
+    T& ComponentContainer<T>::getComponent(Entity::EntityID entityId)
     {
         return components.at(entityId);
     }

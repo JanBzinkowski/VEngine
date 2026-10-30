@@ -3,24 +3,24 @@
 
 #include "IComponentContainer.hpp"
 
-namespace Engine::ECS
+namespace Engine::ECS::Component
 {
     template<typename T>
     class ComponentContainer : public IComponentContainer
     {
     private:
-        std::unordered_map<EntityID, T> components;
+        std::unordered_map<Entity::EntityID, T> components;
     public:
 
-        void removeComponent(EntityID entityId) override;
+        void removeComponent(Entity::EntityID entityId) override;
 
         void clear() override;
 
         template<typename... Args>
-        T& addComponent(EntityID entityId, Args&&... args);
+        T& addComponent(Entity::EntityID entityId, Args&&... args);
 
-        bool hasComponent(EntityID entityId) const;
+        bool hasComponent(Entity::EntityID entityId) const;
 
-        T& getComponent(EntityID entityId);
+        T& getComponent(Entity::EntityID entityId);
     };
 }

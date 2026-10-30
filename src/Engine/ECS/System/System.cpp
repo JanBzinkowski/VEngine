@@ -2,7 +2,7 @@
 #include <Engine/Event/EventManager.hpp>
 #include <Engine/ECS/System/SystemManager.hpp>
 
-namespace Engine::ECS
+namespace Engine::ECS::System
 {
     System::System(SystemManager* manager): m_manager(manager){}
 

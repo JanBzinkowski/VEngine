@@ -50,7 +50,7 @@ namespace Engine::Event
             return;
         }
 
-        newIt -> second.get() -> unsubscribe();
+        newIt -> second -> unsubscribe(id);
 
         m_subscribersEvents.erase(id);
     }

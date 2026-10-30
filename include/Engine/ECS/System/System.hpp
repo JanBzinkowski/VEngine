@@ -1,12 +1,13 @@
 ﻿#pragma once
 
+#include <functional>
 #include <typeindex>
 #include <unordered_map>
 
 #include "Engine/Event/EventManager.hpp"
 #include <Engine/Types/EndPlayReason.hpp>
 
-namespace Engine::ECS
+namespace Engine::ECS::System
 {
     class SystemManager;
 

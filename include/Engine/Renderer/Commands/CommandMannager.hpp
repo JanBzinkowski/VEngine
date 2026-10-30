@@ -1,0 +1,10 @@
+﻿#ifndef VENGINE_COMMANDMANNAGER_H
+#define VENGINE_COMMANDMANNAGER_H
+
+
+class CommandMannager
+{
+};
+
+
+#endif //VENGINE_COMMANDMANNAGER_H

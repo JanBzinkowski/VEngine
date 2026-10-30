@@ -4,17 +4,18 @@
 #include <unordered_map>
 #include <typeindex>
 #include <memory>
+#include <vector>
 
 #include "Engine/ECS/Component/ComponentContainer.hpp"
 
-namespace Engine::ECS
+namespace Engine::ECS::Entity
 {
     class EntityManager
     {
     private:
         EntityManager* m_instance;
 
-        std::unordered_map<std::type_index, std::unique_ptr<IComponentContainer>> m_componentContainers;
+        std::unordered_map<std::type_index, std::unique_ptr<Component::IComponentContainer>> m_componentContainers;
 
         std::uint32_t m_nextEntityId = 0;
         std::vector<std::uint32_t> m_freeId;
@@ -35,7 +36,7 @@ namespace Engine::ECS
         T& getComponent(EntityID entityId);
 
         template<typename T>
-        ComponentContainer<T>* getOrCreateComponentContainer();
+        Component::ComponentContainer<T>* getOrCreateComponentContainer();
 
         template <typename T>
         void removeComponentContainer();

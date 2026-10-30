@@ -1,8 +1,10 @@
 ﻿#pragma once
-#include "Engine/Event/EventManager.hpp"
+#include <cstddef>
 
 namespace Engine::Event
 {
+    using SubscriptionID = std::size_t;
+
     class IEventContainer
     {
     public:

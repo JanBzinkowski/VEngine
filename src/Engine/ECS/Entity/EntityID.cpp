@@ -1,7 +1,7 @@
 #include <functional>
 #include <Engine/ECS/Entity/EntityID.hpp>
 
-namespace Engine::ECS
+namespace Engine::ECS::Entity
 {
     bool EntityID::operator==(const EntityID& other) const
     {
